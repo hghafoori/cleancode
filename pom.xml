@@ -138,6 +138,24 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.8</version>
+				<configuration>
+					<failOnViolation>false</failOnViolation>
+					<!-- <rulesets> <ruleset>${basedir}/quality-checks/pmd-rulesets.xml</ruleset> 
+						</rulesets> -->
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>pmd</goal>
+							<goal>cpd</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
