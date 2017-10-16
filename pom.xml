@@ -84,12 +84,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.17</version>
+				<configuration>
+					<maxAllowedViolations>25</maxAllowedViolations>
+				</configuration>
 				<executions>
 					<execution>
 						<id>validate</id>
 						<phase>validate</phase>
 						<configuration>
-<!--  							<checkstyleRules>
+							<checkstyleRules>
 								<module name="Checker">
 									<module name="SuppressionCommentFilter" />
 									<module name="SuppressWarningsFilter" />
@@ -99,13 +102,36 @@
 									</module>
 								</module>
 							</checkstyleRules>
- -->							 <!--  MaxAllowed Voilations is not yet working -->
-<!--  							<maxAllowedViolations>100</maxAllowedViolations>
- -->							<encoding>UTF-8</encoding>
+							<!-- MaxAllowed Voilations is not yet working -->
+							<maxAllowedViolations>25</maxAllowedViolations>
+							<encoding>UTF-8</encoding>
 							<consoleOutput>true</consoleOutput>
-							<failsOnError>true</failsOnError>
+							<!-- <failsOnError>true</failsOnError> -->
 							<linkXRef>false</linkXRef>
 						</configuration>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.5</version>
+				<configuration>
+					<effort>Max</effort>
+					<threshold>Low</threshold>
+					<xmlOutput>true</xmlOutput>
+					<failOnError>true</failOnError>
+					<includeTests>false</includeTests>
+					<includeFilterFile>quality-checks/findbug-include.xml</includeFilterFile>
+					<!-- <visitors>FindDeadLocalStores,UnreadFields</visitors> -->
+				</configuration>
+				<executions>
+					<execution>
 						<goals>
 							<goal>check</goal>
 						</goals>
@@ -134,11 +160,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.17</version>
-				
-				
 				<configuration>
-				<!-- Rules section is not in sync with checkstyle:check above check is not failing still report showing error or vice versa  -->
-<!-- 					<checkstyleRules>
+					<!-- Rules section is not in sync with checkstyle:check above check 
+						is not failing still report showing error or vice versa -->
+					<checkstyleRules>
 						<module name="Checker">
 							<module name="SuppressionCommentFilter" />
 							<module name="SuppressWarningsFilter" />
@@ -148,14 +173,10 @@
 							</module>
 						</module>
 					</checkstyleRules>
- -->	 			
- 					<encoding>UTF-8</encoding>
+					<encoding>UTF-8</encoding>
 					<consoleOutput>true</consoleOutput>
 					<linkXRef>false</linkXRef>
 				</configuration>
-				
-				
-				
 				<reportSets>
 					<reportSet>
 						<reports>
@@ -164,7 +185,19 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.5</version>
+				<configuration>
+					<effort>Max</effort>
+					<threshold>Low</threshold>
+					<xmlOutput>true</xmlOutput>
+					<includeTests>false</includeTests>
+					<includeFilterFile>quality-checks/findbug-include.xml</includeFilterFile>
+					<!-- <visitors>FindDeadLocalStores,UnreadFields</visitors> -->
+				</configuration>
+			</plugin>
 		</plugins>
 	</reporting>
 </project>
