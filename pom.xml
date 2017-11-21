@@ -27,7 +27,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.9</version>
+				<version>0.7.8</version>
 				<configuration>
 					<haltOnFailure>true</haltOnFailure>
 					<rules>
@@ -156,6 +156,15 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<!--&lt;!&ndash; Overriding site plugin &ndash;&gt;-->
+			<!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin &ndash;&gt;-->
+			<!--<plugin>-->
+			    <!--<groupId>org.apache.maven.plugins</groupId>-->
+			    <!--<artifactId>maven-site-plugin</artifactId>-->
+			    <!--<version>3.6</version>-->
+			<!--</plugin>-->
+			
 		</plugins>
 	</build>
 
@@ -164,7 +173,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.9</version>
+				<version>0.7.8</version>
 
 				<reportSets>
 					<reportSet>
@@ -231,8 +240,6 @@
 						</reports>
 					</reportSet>
 				</reportSets>
-
-
 			</plugin>
 		</plugins>
 	</reporting>
